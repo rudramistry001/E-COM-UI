@@ -57,7 +57,6 @@ class CustomText extends StatelessWidget {
         fontWeight = FontWeight.w200; // Light
         break;
       case TextWeight.regular:
-      default:
         fontWeight = FontWeight.w400; // Regular
         break;
     }
