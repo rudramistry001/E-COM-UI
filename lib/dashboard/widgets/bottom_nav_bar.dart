@@ -13,10 +13,18 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70
-          .h, // Increase this value to adjust the height of the bottom nav bar
+    return Container(
+      height: 60.h,
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: Colors.grey.shade300, // Light grey color
+            width: 1.0, // Border width
+          ),
+        ),
+      ),
       child: BottomNavigationBar(
+        backgroundColor: Colors.white,
         currentIndex: currentIndex, // Bind the selected index
         onTap: onItemTapped, // Trigger the callback
         selectedItemColor: Colors.blue, // Color for the selected item

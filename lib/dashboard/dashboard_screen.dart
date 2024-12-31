@@ -1,8 +1,8 @@
+import 'package:e_com_ui/screens/profile/profilescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:e_com_ui/dashboard/home_screen.dart';
 import 'package:e_com_ui/dashboard/notification/notification_screen.dart';
 import 'package:e_com_ui/screens/cart/cart_screen.dart';
-import 'package:e_com_ui/screens/profile/profile_screen.dart';
 import 'package:e_com_ui/dashboard/widgets/bottom_nav_bar.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -34,6 +34,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: IndexedStack(
         index: _selectedIndex,
         children: _pages,

@@ -35,13 +35,13 @@ class CustomText extends StatelessWidget {
         fontSize = 22.sp;
         break;
       case TextType.bodyLarge:
-        fontSize = 18.sp;
-        break;
-      case TextType.bodySmall:
         fontSize = 16.sp;
         break;
-      case TextType.caption:
+      case TextType.bodySmall:
         fontSize = 14.sp;
+        break;
+      case TextType.caption:
+        fontSize = 12.sp;
         break;
     }
 
