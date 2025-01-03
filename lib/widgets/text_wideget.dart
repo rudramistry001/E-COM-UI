@@ -32,7 +32,7 @@ class CustomText extends StatelessWidget {
         fontSize = 29.sp;
         break;
       case TextType.title:
-        fontSize = 22.sp;
+        fontSize = 20.sp;
         break;
       case TextType.bodyLarge:
         fontSize = 16.sp;
@@ -48,7 +48,7 @@ class CustomText extends StatelessWidget {
     FontWeight fontWeight;
     switch (textWeight) {
       case TextWeight.bold:
-        fontWeight = FontWeight.w600; // Bold
+        fontWeight = FontWeight.bold; // Bold
         break;
       case TextWeight.semiBold:
         fontWeight = FontWeight.w400; // Semi-Bold

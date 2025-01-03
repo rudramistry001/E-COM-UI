@@ -1,3 +1,4 @@
+import 'package:e_com_ui/screens/profile/manage_address_screen.dart';
 import 'package:e_com_ui/screens/profile/widgets/1_profile_tile.dart';
 import 'package:e_com_ui/screens/profile/widgets/custom_divider.dart';
 import 'package:e_com_ui/screens/profile/widgets/profile_container.dart';
@@ -62,7 +63,7 @@ class ProfileScreen extends StatelessWidget {
                 },
               ),
               10.verticalSpace,
-              CustomLineDivider(
+              const CustomLineDivider(
                 thickness: 1.0,
                 indent: 0.0,
                 endIndent: 0.0,
@@ -89,7 +90,13 @@ class ProfileScreen extends StatelessWidget {
               10.verticalSpace,
               CustomProfileWidget(
                 text: "Saved Addresses",
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SavedAddressScreen()),
+                  );
+                },
                 icon: Icons.location_on_outlined,
               ),
               10.verticalSpace,
@@ -104,60 +111,48 @@ class ProfileScreen extends StatelessWidget {
                 onTap: () {},
                 icon: Icons.notifications_active_outlined,
               ),
-              CustomLineDivider(
+              const CustomLineDivider(
                 thickness: 1.0,
                 indent: 0.0,
                 endIndent: 0.0,
               ),
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Send Feedback",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontFamily: "Metrophobic",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
+                child: CustomText(
+                  text: 'Send Feedback',
+                  textType: TextType.caption,
+                  textWeight: TextWeight.regular,
+                  color: Colors.black,
                 ),
               ),
               10.verticalSpace,
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Report A Safety Emergency",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontFamily: "Metrophobic",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
+                child: const CustomText(
+                  text: 'Report A Safety Emergency',
+                  textType: TextType.caption,
+                  textWeight: TextWeight.regular,
+                  color: Colors.black,
                 ),
               ),
               10.verticalSpace,
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Rate us on the Play Store",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontFamily: "Metrophobic",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
+                child: CustomText(
+                  text: 'Rate us on the Play Store',
+                  textType: TextType.caption,
+                  textWeight: TextWeight.regular,
+                  color: Colors.black,
                 ),
               ),
               20.verticalSpace,
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "LOG OUT",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontFamily: "Metrophobic",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: CustomText(
+                  text: 'LOG OUT',
+                  textType: TextType.bodySmall,
+                  textWeight: TextWeight.regular,
+                  color: Colors.red,
                 ),
               ),
               50.verticalSpace,

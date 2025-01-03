@@ -1,5 +1,7 @@
 import 'package:e_com_ui/screens/profile/edit_address_screen.dart';
 import 'package:e_com_ui/screens/profile/widgets/address_card.dart';
+import 'package:e_com_ui/widgets/custom_app_bar.dart';
+import 'package:e_com_ui/widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,32 +11,22 @@ class AddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "MANAGE ADDRESSES",
-          style: TextStyle(
-              fontFamily: "Metrophobic",
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold),
-        ),
+      appBar: const CustomAppBar(
+        appbartext: "MANAGE ADDRESSES", // Pass the desired app bar title
       ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0.sp),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "SAVED ADDRESSES",
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontFamily: "Metrophobic",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
+              const Align(
+                  alignment: Alignment.centerLeft,
+                  child: CustomText(
+                    text: "SAVED ADDRESSES",
+                    textType: TextType.bodyLarge,
+                    textWeight: TextWeight.regular,
+                    color: Colors.black,
+                  )),
               20.verticalSpace,
               AddressCard(
                 title: 'Home',
@@ -63,10 +55,7 @@ class AddressScreen extends StatelessWidget {
                         builder: (context) => const EditAddressScreen()),
                   );
                 },
-                onDeletePressed: () {
-                  // Handle delete action
-                  print('Delete button pressed');
-                },
+                onDeletePressed: () {},
               ),
             ],
           ),

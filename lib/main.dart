@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               scaffoldBackgroundColor:
                   Colors.white, // Set white as the default background color
-              appBarTheme: AppBarTheme(
+              appBarTheme: const AppBarTheme(
                 backgroundColor: Colors
                     .white, // Optional: Ensure AppBar matches the background
               ),
