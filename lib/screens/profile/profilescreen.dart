@@ -1,4 +1,6 @@
 import 'package:e_com_ui/screens/profile/widgets/1_profile_tile.dart';
+import 'package:e_com_ui/screens/profile/widgets/custom_divider.dart';
+import 'package:e_com_ui/screens/profile/widgets/profile_container.dart';
 import 'package:e_com_ui/widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +35,6 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              30.verticalSpace,
               GridView.builder(
                 itemCount: 4, // Total number of tiles
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -60,6 +61,131 @@ class ProfileScreen extends StatelessWidget {
                   return tiles[index];
                 },
               ),
+              10.verticalSpace,
+              CustomLineDivider(
+                thickness: 1.0,
+                indent: 0.0,
+                endIndent: 0.0,
+              ),
+              10.verticalSpace,
+              const CustomText(
+                text: "Account Settings",
+                textType: TextType.bodyLarge,
+                textWeight: TextWeight.bold,
+                color: Colors.black,
+              ),
+              10.verticalSpace,
+              CustomProfileWidget(
+                text: "Manage Your Profile",
+                onTap: () {},
+                icon: Icons.person_outlined,
+              ),
+              10.verticalSpace,
+              CustomProfileWidget(
+                text: "Saved Cards & Wallets",
+                onTap: () {},
+                icon: Icons.payment_outlined,
+              ),
+              10.verticalSpace,
+              CustomProfileWidget(
+                text: "Saved Addresses",
+                onTap: () {},
+                icon: Icons.location_on_outlined,
+              ),
+              10.verticalSpace,
+              CustomProfileWidget(
+                text: "Select Language",
+                onTap: () {},
+                icon: Icons.language,
+              ),
+              10.verticalSpace,
+              CustomProfileWidget(
+                text: "Notification Settings",
+                onTap: () {},
+                icon: Icons.notifications_active_outlined,
+              ),
+              CustomLineDivider(
+                thickness: 1.0,
+                indent: 0.0,
+                endIndent: 0.0,
+              ),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Send Feedback",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontFamily: "Metrophobic",
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              10.verticalSpace,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Report A Safety Emergency",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontFamily: "Metrophobic",
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              10.verticalSpace,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Rate us on the Play Store",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontFamily: "Metrophobic",
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              20.verticalSpace,
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "LOG OUT",
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontFamily: "Metrophobic",
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              50.verticalSpace,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "D Commerce",
+                  style: TextStyle(
+                    fontSize: 25.sp,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                    fontFamily: "DancingScript",
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  "v1.0.0",
+                  style: TextStyle(
+                    fontFamily: "Metrophobic",
+                    fontSize: 20.sp,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+              70.verticalSpace,
             ],
           ),
         ),

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     super.key,
   });
 
-  // The build method is used to desZcribe how to display the widget in terms of other, lower-level widgets.
+  // The build method is used to describe how to display the widget in terms of other, lower-level widgets.
   @override
   Widget build(BuildContext context) {
     // ScreenUtilInit is used for setting up screen size dependencies for responsive UI.
@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
                 snackBarKey, // Setting the scaffold messenger key for snack bars.z
             debugShowCheckedModeBanner:
                 false, // Disabling the debug banner on UI.
-
             home: const DashboardScreen(),
           );
         });

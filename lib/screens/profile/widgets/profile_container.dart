@@ -1,12 +1,13 @@
+import 'package:e_com_ui/widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomProfileText extends StatelessWidget {
+class CustomProfileWidget extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final IconData icon;
 
-  const CustomProfileText({
+  const CustomProfileWidget({
     required this.text,
     required this.onTap,
     required this.icon,
@@ -21,26 +22,28 @@ class CustomProfileText extends StatelessWidget {
         width: double.infinity, // Makes the container occupy full width
         padding: EdgeInsets.symmetric(vertical: 12.sp, horizontal: 16.sp),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CircleAvatar(
-              radius: 18.r, // Size of the circle
-              backgroundColor:
-                  Colors.grey.shade300, // Background color of the circle
-              child: Icon(
-                icon, // Customizable icon
-                color: Colors.grey.shade600,
-              ),
+            Row(
+              children: [
+                Icon(
+                  icon,
+                  size: 22.sp,
+                  color: Colors.blue,
+                ),
+                SizedBox(width: 10.sp), // Adds space between the icon and text
+                CustomText(
+                  text: text,
+                  textType: TextType.bodyLarge,
+                  textWeight: TextWeight.regular,
+                  color: Colors.black,
+                ),
+              ],
             ),
-            SizedBox(width: 10.sp), // Adds space between the icon and text
-            Text(
-              text,
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: "Metrophobic",
-                fontSize: 18.sp,
-                fontWeight: FontWeight.w400,
-              ),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 16.sp,
+              color: Colors.grey.shade600,
             ),
           ],
         ),

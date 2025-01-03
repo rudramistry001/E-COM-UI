@@ -158,7 +158,6 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
               20.verticalSpace,
               CustomLineDivider(
                 thickness: 2.0,
-                color: Colors.grey.shade300,
                 indent: 0.0,
                 endIndent: 0.0,
               ),
