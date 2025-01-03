@@ -1,6 +1,8 @@
 import 'package:e_com_ui/screens/profile/widgets/custom_divider.dart';
 import 'package:e_com_ui/screens/profile/widgets/custom_textfield.dart';
 import 'package:e_com_ui/screens/profile/widgets/custom_textfield_label.dart';
+import 'package:e_com_ui/widgets/custom_app_bar.dart';
+import 'package:e_com_ui/widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -71,109 +73,28 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "EDIT ADDRESS",
-          style: TextStyle(
-              fontFamily: "Metrophobic",
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold),
-        ),
-      ),
+      appBar: CustomAppBar(appbartext: "ADD NEW ADDRESS"),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0.sp),
           child: Column(
             children: [
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "PERSONAL DETAILS",
-                  style: TextStyle(
-                      fontFamily: "Metrophobic",
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              20.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "Full Name*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
-              ),
-              CustomStyledTextField(
-                controller: housenoController,
-                keyboardType: TextInputType.name,
-                hintText: "Ex: John Doe",
-                prefixIcon: const Icon(Icons.person),
-                validator: (val) {
-                  if (val == null || val.isEmpty) {
-                    return 'Full Name is a required field'; // Validation: must not be empty
-                  }
-                  return null;
-                },
-                onValidationChanged: (isValid) {
-                  setState(() {
-                    isHouseNoValid = isValid;
-                  });
-                },
-                errorText: isHouseNoValid
-                    ? null
-                    : 'Full Name is a required field', // Show error when invalid
-              ),
-              20.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "Contact Number*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
-              ),
-
-              // Mobile Number field with validation
-              CustomStyledTextField(
-                hintText: "Enter your contact number",
-                prefixIcon: const Icon(Icons.phone),
-                keyboardType: TextInputType.phone,
-                controller: contactnoController,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return "Contact number is required";
-                  } else if (value.length < 10 ||
-                      !RegExp(r'^\d+$').hasMatch(value)) {
-                    return "Mobile number must be at least 10 digits";
-                  } else if (value.length > 10 ||
-                      !RegExp(r'^\d+$').hasMatch(value)) {
-                    return "Mobile number must be of only 10 digits";
-                  }
-                  return null;
-                },
-                onValidationChanged: (isValid) {
-                  setState(() {
-                    isContactNumberValid = isValid;
-                  });
-                },
-                errorText: isContactNumberValid
-                    ? null
-                    : "Mobile number must be at least 10 digits",
-              ),
-              20.verticalSpace,
-              CustomLineDivider(
-                thickness: 2.0,
-                indent: 0.0,
-                endIndent: 0.0,
-              ),
               20.verticalSpace,
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "ADDRESS DETAILS",
-                  style: TextStyle(
-                    fontFamily: "Metrophobic",
-                    fontSize: 18.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
+                child: CustomText(
+                  text: "ADDRESS DETAILS",
+                  textType: TextType.bodyLarge,
+                  textWeight: TextWeight.regular,
+                  color: Colors.black,
                 ),
               ),
-              20.verticalSpace,
+              10.verticalSpace,
+              const CustomTextFieldLabel(
+                labelText: "State*",
+                fontColor: Colors.grey,
+                fontWeight: FontWeight.w400,
+              ),
               Container(
                 width: 360.w,
                 height: 50.h,

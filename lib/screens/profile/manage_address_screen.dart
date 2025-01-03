@@ -1,3 +1,4 @@
+import 'package:e_com_ui/screens/profile/edit_address_screen.dart';
 import 'package:e_com_ui/screens/profile/widgets/select_address_card.dart';
 import 'package:e_com_ui/widgets/custom_app_bar.dart';
 import 'package:e_com_ui/widgets/custom_elevated_button.dart';
@@ -68,7 +69,13 @@ class _SavedAddressScreenState extends State<SavedAddressScreen> {
             ),
             30.verticalSpace,
             CustomElevatedButtonWithIcon(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const EditAddressScreen()),
+                );
+              },
               text: "Add New Address",
               icon: Icons.add,
               height: 50.sp,
