@@ -1,4 +1,6 @@
+import 'package:e_com_ui/screens/categories/categories_screen.dart';
 import 'package:e_com_ui/screens/profile/profilescreen.dart';
+import 'package:e_com_ui/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:e_com_ui/dashboard/home_screen.dart';
 import 'package:e_com_ui/dashboard/notification/notification_screen.dart';
@@ -18,9 +20,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // List of pages corresponding to each tab
   final List<Widget> _pages = [
     const HomeScreen(),
-    const Center(child: Text('Categories Page')),
+    HomeScreen2(),
     const NotificationScreen(),
-    const CartScreen(),
+    const SearchScreen(),
     const ProfileScreen(), // Added ProfileScreen here
   ];
 

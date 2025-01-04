@@ -10,7 +10,7 @@ final GlobalKey<ScaffoldMessengerState> snackBarKey =
     GlobalKey<ScaffoldMessengerState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Set the preferred orientation to portrait
+  // Set the preferred orientations to portrait
   await SystemChrome.setPreferredOrientations(
     [
       DeviceOrientation.portraitUp, // Portrait up mode

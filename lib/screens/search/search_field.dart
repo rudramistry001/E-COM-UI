@@ -3,10 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomSearchField extends StatelessWidget {
   final TextEditingController controller;
-  final String hintText;
+  final String  hintText;
   final Function(String) onChanged;
 
-  const CustomSearchField({super.key, 
+  const CustomSearchField({
+    super.key,
     required this.controller,
     required this.hintText,
     required this.onChanged,

@@ -1,4 +1,3 @@
-import 'package:e_com_ui/screens/profile/widgets/custom_divider.dart';
 import 'package:e_com_ui/screens/profile/widgets/custom_textfield.dart';
 import 'package:e_com_ui/screens/profile/widgets/custom_textfield_label.dart';
 import 'package:e_com_ui/widgets/custom_app_bar.dart';
@@ -73,14 +72,14 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(appbartext: "ADD NEW ADDRESS"),
+      appBar: const CustomAppBar(appbartext: "ADD NEW ADDRESS"),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0.sp),
           child: Column(
             children: [
               20.verticalSpace,
-              Align(
+              const Align(
                 alignment: Alignment.centerLeft,
                 child: CustomText(
                   text: "ADDRESS DETAILS",
