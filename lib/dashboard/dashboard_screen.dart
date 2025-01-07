@@ -4,7 +4,6 @@ import 'package:e_com_ui/screens/search/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:e_com_ui/dashboard/home_screen.dart';
 import 'package:e_com_ui/dashboard/notification/notification_screen.dart';
-import 'package:e_com_ui/screens/cart/cart_screen.dart';
 import 'package:e_com_ui/dashboard/widgets/bottom_nav_bar.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     const SearchScreen(),
     const ProfileScreen(), // Added ProfileScreen here
   ];
-
+  
   // Method to update the selected index and display the appropriate page
   void _onItemTapped(int index) {
     setState(() {
