@@ -154,17 +154,17 @@ class HomeScreen2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Categories Section
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: const [
+                children: [
                   CategoryItem(iconPath: 'assets/emi.png', label: 'EMI'),
                   SizedBox(width: 16),
                   CategoryItem(
@@ -183,11 +183,11 @@ class HomeScreen2 extends StatelessWidget {
 
           // Products Section
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: const [
+                children: [
                   ProductCard(
                     imageUrl: 'https://placeholder.com/deals1',
                     title: 'Grab Deals',
@@ -209,7 +209,7 @@ class HomeScreen2 extends StatelessWidget {
           ),
 
           // Recently Viewed Section
-          const Padding(
+          Padding(
             padding: EdgeInsets.fromLTRB(16, 8, 16, 16),
             child: Text(
               'Recently Viewed Stores',
@@ -221,11 +221,11 @@ class HomeScreen2 extends StatelessWidget {
           ),
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: const [
+                children: [
                   RecentlyViewedItem(
                     imageUrl: 'https://placeholder.com/earphones',
                     title: 'Wired Earphones',

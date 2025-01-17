@@ -1,14 +1,11 @@
 import 'dart:async';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_com_ui/dashboard/models/product_model.dart';
 import 'package:e_com_ui/dashboard/widgets/product_carousel.dart';
+import 'package:e_com_ui/screens/home/widgets/search_bar.dart';
 import 'package:e_com_ui/widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../screens/search/search_field.dart';
-import '../dashboard/notification/notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -82,13 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int _currentIndex = 0; // Current index for the active image in the carousel
 
-  void _onSearchChanged(String value) {
-    setState(() {
-      if (value.isNotEmpty && !recentSearches.contains(value)) {
-        recentSearches.insert(0, value);
-      }
-    });
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -96,81 +87,28 @@ class _HomeScreenState extends State<HomeScreen> {
     final minutes = (_remainingTime.inMinutes % 60).toString().padLeft(2, '0');
     final seconds = (_remainingTime.inSeconds % 60).toString().padLeft(2, '0');
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade100,
       body: RefreshIndicator(
         color: Colors.blue,
         backgroundColor: Colors.white,
         onRefresh: _refreshContent,
         child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.all(16.0.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 30.h),
-                // Header Section
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 20.r,
-                          backgroundImage:
-                              const AssetImage('assets/images/profile.png'),
-                        ),
-                        SizedBox(width: 10.w),
-                        const CustomText(
-                          text: "Hello Rudra",
-                          color: Colors.black,
-                          textType: TextType.title,
-                          textWeight: TextWeight.regular,
-                        ),
-                      ],
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const NotificationScreen(),
-                          ),
-                        );
-                      },
-                      icon: Stack(
-                        children: [
-                          Icon(
-                            Icons.notifications_outlined,
-                            size: 28.sp,
-                          ),
-                          Positioned(
-                            top: 0,
-                            right: 0,
-                            child: CircleAvatar(
-                              radius: 6.r,
-                              backgroundColor: Colors.red,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                20.verticalSpace,
-                // Search Field
-                CustomSearchField(
-                  controller: searchController,
-                  hintText: 'Search . . .',
-                  onChanged: _onSearchChanged,
-                ),
-                20.verticalSpace,
-
-                // Custom Carousel Slider Section
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const CustomSearchHome(),
+            Padding(  
+              padding:  EdgeInsets.all(16.0.sp),
+              child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+                children: [// Custom Carousel Slider Section
                 const CustomText(
                   text: "Exclusive Offers",
                   color: Colors.black,
-                  textType: TextType.bodyLarge,
-                  textWeight: TextWeight.regular,
+                  textType: TextType.title,
+                  textWeight: TextWeight.semiBold,
                 ),
                 10.verticalSpace,
                 SizedBox(
@@ -202,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           );
                         },
                       ),
-
+                        
                       // Dots Indicator
                       Positioned(
                         bottom: 10.h,
@@ -229,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: 20.h),
-
+                        
                 // Offers Section (Deal of the Day)
                 const CustomText(
                   text: "Deal of the Day",
@@ -269,10 +207,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 20.verticalSpace, // Space before ProductCarousel
-
-                100.verticalSpace, // Optional space at the end
+                        
+                100.verticalSpace, // Optional space at the end],)
+                
               ],
+                        ),
             ),
+            ]
           ),
         ),
       ),
@@ -287,27 +228,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Helper method to build a time box
   Widget _buildTimeBox(String time, String label) {
-    return Container(
-      child: Row(
-        children: [
-          Text(
-            time,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+    return Row(
+      children: [
+        Text(
+          time,
+          style: TextStyle(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
+        ),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 14.sp,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
