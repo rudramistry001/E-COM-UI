@@ -1,7 +1,9 @@
-import 'package:e_com_ui/dashboard/dashboard_screen.dart';
+import 'package:e_com_ui/4%20view%20model/register_view_model.dart';
+import 'package:e_com_ui/8%20global%20utils/initial_loading_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 // Global key to keep track of the navigator state.
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -10,14 +12,19 @@ final GlobalKey<ScaffoldMessengerState> snackBarKey =
     GlobalKey<ScaffoldMessengerState>();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // Set the preferred orientations to portrait
-  await SystemChrome.setPreferredOrientations(
-    [
-      DeviceOrientation.portraitUp, // Portrait up mode
-      DeviceOrientation.portraitDown, // Portrait down mode (optional)
-    ],
+  // Set the preferred orientation to portrait
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp, // Portrait up mode
+    DeviceOrientation.portraitDown, // Portrait down mode (optional)
+  ]);
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => RegisterViewModel()),
+      ],
+      child: MyApp(),
+    ),
   );
-  runApp(const MyApp());
 }
 
 // MyApp class which represents the root of our application.
@@ -33,31 +40,20 @@ class MyApp extends StatelessWidget {
     // ScreenUtilInit is used for setting up screen size dependencies for responsive UI.
     return ScreenUtilInit(
         designSize: const Size(360, 690), // Design size for UI elements.
-        minTextAdapt: true,
-        splitScreenMode: true,
+        minTextAdapt: true, // Enable minimum text adaptation.
+        splitScreenMode: true, // Enable split-screen mode support.
         builder: (_, child) {
           // Builder function to return MaterialApp.
           return MaterialApp(
-            theme: ThemeData(
-              scaffoldBackgroundColor:
-                  Colors.white, // Set white as the default background color
-              appBarTheme: const AppBarTheme(
-                backgroundColor: Colors
-                    .white, // Optional: Ensure AppBar matches the background
-              ),
-            ),
-            color: Colors.white,
             title: 'D COM', // Title of the application.
             navigatorKey: navigatorKey, // Setting the navigator key.
             scaffoldMessengerKey:
                 snackBarKey, // Setting the scaffold messenger key for snack bars.z
             debugShowCheckedModeBanner:
                 false, // Disabling the debug banner on UI.
-            home: const DashboardScreen(),
+
+            home: InitialLoadingScreen(),
           );
         });
   }
 }
-
-
-
