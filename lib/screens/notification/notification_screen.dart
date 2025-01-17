@@ -1,4 +1,4 @@
-import 'package:e_com_ui/dashboard/notification/widgets/notification_card.dart';
+import 'package:e_com_ui/screens/notification/widgets/notification_card.dart';
 import 'package:e_com_ui/widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
