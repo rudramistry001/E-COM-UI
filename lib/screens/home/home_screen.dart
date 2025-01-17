@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_com_ui/dashboard/models/product_model.dart';
-import 'package:e_com_ui/dashboard/widgets/product_carousel.dart';
 import 'package:e_com_ui/screens/home/widgets/search_bar.dart';
 import 'package:e_com_ui/widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> recentSearches = [];
   TextEditingController searchController = TextEditingController();
 
-  // List of image URLs (fetched from backend)
+
   List<String> imageUrls = [
     "https://i.imghippo.com/files/lLo9557mPE.png",
     "https://i.imghippo.com/files/QgfB3788Tc.png",
@@ -58,24 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // List of products
   final products = [
-    Product(
-        name: "IPhones",
-        imageUrl: "https://i.imghippo.com/files/MnG9652QpQ.png",
-        price: 29.99),
-    Product(
-        name: "Laptops",
-        imageUrl: "https://i.imghippo.com/files/G4076eo.png",
-        price: 19.99),
-    Product(
-        name: "Sneakers",
-        imageUrl: "https://i.imghippo.com/files/DAi5219qOc.png",
-        price: 39.99),
-    Product(
-        name: "BLuetooth Speakers",
-        imageUrl: "https://i.imghippo.com/files/CjHs7649tts.png",
-        price: 49.99),
-    // Add more products as needed
+    {"title": "Running Shoes", "discount": "Upto 40% OFF", "imageUrl": "https://i.imghippo.com/files/MnG9652QpQ.png"},
+    {"title": "Sneakers", "discount": "40-60% OFF", "imageUrl": "https://i.imghippo.com/files/MnG9652QpQ.png"},
+    {"title": "Wrist Watches", "discount": "Upto 40% OFF", "imageUrl": "https://i.imghippo.com/files/MnG9652QpQ.png"},
+    {"title": "Bluetooth Speakers", "discount": "40-60% OFF", "imageUrl": "https://i.imghippo.com/files/MnG9652QpQ.png"},
   ];
+
 
   int _currentIndex = 0; // Current index for the active image in the carousel
 
@@ -90,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.grey.shade100,
       body: RefreshIndicator(
         color: Colors.blue,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade200,
         onRefresh: _refreshContent,
         child: SingleChildScrollView(
           child: Column(
@@ -125,17 +111,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           });
                         },
                         itemBuilder: (context, index) {
-                          return Container(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5.r),
-                              child: CachedNetworkImage(
-                                imageUrl: imageUrls[index],
-                                placeholder: (context, url) => const Center(
-                                    child: CircularProgressIndicator()),
-                                errorWidget: (context, url, error) =>
-                                    const Icon(Icons.error, color: Colors.red),
-                                fit: BoxFit.fill,
-                              ),
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(5.r),
+                            child: CachedNetworkImage(
+                              imageUrl: imageUrls[index],
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error, color: Colors.red),
+                              fit: BoxFit.fill,
                             ),
                           );
                         },
@@ -197,17 +181,42 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 10.verticalSpace,
                 // Product Carousel Section
-                ProductCarousel(products: products),
-                Text(
-                  "Eat what makes you happy",
-                  style: TextStyle(
-                    fontSize: 18.sp,
-                    color: Colors.grey,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                20.verticalSpace, // Space before ProductCarousel
-                        
+               
+      Container(
+        color: Colors.white,
+        child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 8,
+                        mainAxisSpacing: 8,
+                      ),
+                      itemCount: products.length,
+                      itemBuilder: (context, index) {
+                        final product = products[index];
+                        return Card(
+                          child: Column(
+                            children: [
+                              Expanded(
+                                child: CachedNetworkImage(
+                                  imageUrl: product['imageUrl']!,
+                                  placeholder: (context, url) =>
+                                      const Center(child: CircularProgressIndicator()),
+                                  errorWidget: (context, url, error) =>
+                                      const Icon(Icons.error),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              Text(product['title']!),
+                              Text(product['discount']!, style: const TextStyle(color: Colors.red)),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+      ),
+               
                 100.verticalSpace, // Optional space at the end],)
                 
               ],
