@@ -3,7 +3,7 @@
 import 'dart:convert';
 
 import 'package:e_com_ui/1%20model/auth_model.dart';
-import 'package:e_com_ui/3%20repository/register_service.dart';
+import 'package:e_com_ui/3%20repository/register_repository.dart';
 import 'package:e_com_ui/5%20screens/auth/login_screen.dart';
 import 'package:e_com_ui/8%20global%20utils/global_utils.dart';
 import 'package:e_com_ui/8%20global%20utils/loader.dart';

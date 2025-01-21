@@ -1,3 +1,4 @@
+import 'package:e_com_ui/4%20view%20model/offer_view_model.dart';
 import 'package:e_com_ui/4%20view%20model/register_view_model.dart';
 import 'package:e_com_ui/8%20global%20utils/initial_loading_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,9 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => RegisterViewModel()),
+         ChangeNotifierProvider(create: (_) => OfferViewModel()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -52,7 +54,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner:
                 false, // Disabling the debug banner on UI.
 
-            home: InitialLoadingScreen(),
+            home: const InitialLoadingScreen(),
           );
         });
   }

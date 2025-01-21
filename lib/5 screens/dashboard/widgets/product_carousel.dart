@@ -1,4 +1,5 @@
-import 'package:e_com_ui/screens/dashboard/models/product_model.dart';
+
+import 'package:e_com_ui/5%20screens/dashboard/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

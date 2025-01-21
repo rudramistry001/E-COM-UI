@@ -2,7 +2,7 @@
 import 'package:e_com_ui/1%20model/auth_model.dart';
 import 'package:e_com_ui/4%20view%20model/register_view_model.dart';
 import 'package:e_com_ui/5%20screens/auth/login_screen.dart';
-import 'package:e_com_ui/5%20screens/home/home_screen.dart';
+import 'package:e_com_ui/5%20screens/dashboard/dashboard_screen.dart';
 import 'package:e_com_ui/6%20global%20widgets/text_wideget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +62,7 @@ class _InitialLoadingScreenState extends State<InitialLoadingScreen> {
       if (isTokenValid) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const DashboardScreen()),
         );
       } else {
         // If token is invalid, clear stored token and navigate to LoginScreen

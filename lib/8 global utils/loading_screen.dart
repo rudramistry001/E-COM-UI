@@ -1,6 +1,6 @@
 
 import 'package:e_com_ui/5%20screens/auth/login_screen.dart';
-import 'package:e_com_ui/5%20screens/home/home_screen.dart';
+import 'package:e_com_ui/5%20screens/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -35,7 +35,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       }
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(builder: (_) => const DashboardScreen()),
       );
     } catch (e) {
       await Future.delayed(const Duration(seconds: 3));

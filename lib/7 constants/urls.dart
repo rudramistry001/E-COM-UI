@@ -9,8 +9,19 @@ class UrlConstant {
   static const String prodUrl = "";
   static String baseUrl = BaseUrl().isProd ? prodUrl : uatUrl;
 
-  static String register = "/register";
 
+//utils
+  static String offer = "/offer";
+
+
+//authentication 
+  static String register = "/register";
   static String login = "/login";
   static String verifytoken = "/verify-token";
+
+
+  //dashboard
+
+  static String getoffer = "/getUploadsOffer";
+
 }

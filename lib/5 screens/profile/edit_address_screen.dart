@@ -1,7 +1,6 @@
-
 import 'package:e_com_ui/5%20screens/auth/widgets/custom_textfield.dart';
-import 'package:e_com_ui/5%20screens/auth/widgets/custom_textfield_label.dart';
 import 'package:e_com_ui/6%20global%20widgets/custom_app_bar.dart';
+import 'package:e_com_ui/6%20global%20widgets/custom_elevated_button.dart';
 import 'package:e_com_ui/6%20global%20widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,18 +14,32 @@ class EditAddressScreen extends StatefulWidget {
 
 class _EditAddressScreenState extends State<EditAddressScreen> {
   bool isHouseNoValid = false;
-  bool isContactNumberValid = false;
+  bool isNearestLandmarkValid = false;
+  bool isAreaValid = false;
+  bool isZipCodeValid = false;
+  bool isCityValid = false;
+  bool isCustomerNameValid = false;
+  bool isCustomerNoValid = false;
+  bool _isChecked = false;
 
   TextEditingController housenoController = TextEditingController();
+  TextEditingController landmarkController = TextEditingController();
+  TextEditingController areaController = TextEditingController();
+  TextEditingController zipocodeController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController customernameController = TextEditingController();
   TextEditingController contactnoController = TextEditingController();
-  TextEditingController landmarkcontroller = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
     housenoController.dispose();
+    landmarkController.dispose();
+    areaController.dispose();
+    zipocodeController.dispose();
+    cityController.dispose();
+    customernameController.dispose();
     contactnoController.dispose();
-    landmarkcontroller.dispose();
   }
 
   // Initial Selected Value
@@ -90,11 +103,109 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                 ),
               ),
               10.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "State*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
+              20.verticalSpace,
+              CustomStyledTextField(
+                controller: housenoController,
+                keyboardType: TextInputType.name,
+                hintText: "House/Flat Number*",
+
+                validator: (val) {
+                  if (val == null || val.isEmpty) {
+                    return 'This is a required field'; // Validation: must not be empty
+                  }
+                  return null;
+                },
+                onValidationChanged: (isValid) {
+                  setState(() {
+                    isHouseNoValid = isValid;
+                  });
+                },
+                errorText: isHouseNoValid
+                    ? null
+                    : 'House Number is a required field', // Show error when invalid
               ),
+              20.verticalSpace,
+              CustomStyledTextField(
+                controller: landmarkController,
+                keyboardType: TextInputType.name,
+                hintText: "Nearest Landmark*",
+
+                validator: (val) {
+                  if (val == null || val.isEmpty) {
+                    return 'Landmark is a required field'; // Validation: must not be empty
+                  }
+                  return null;
+                },
+                onValidationChanged: (isValid) {
+                  setState(() {
+                    isNearestLandmarkValid = isValid;
+                  });
+                },
+                errorText: isNearestLandmarkValid
+                    ? null
+                    : 'Landmark is a required field', // Show error when invalid
+              ),
+              20.verticalSpace,
+              CustomStyledTextField(
+                controller: areaController,
+                keyboardType: TextInputType.name,
+                hintText: "Area*",
+                validator: (val) {
+                  if (val == null || val.isEmpty) {
+                    return 'This is a required field'; // Validation: must not be empty
+                  }
+                  return null;
+                },
+                onValidationChanged: (isValid) {
+                  setState(() {
+                    isAreaValid = isValid;
+                  });
+                },
+                errorText: isAreaValid
+                    ? null
+                    : 'This is a required field', // Show error when invalid
+              ),
+              20.verticalSpace,
+              CustomStyledTextField(
+                controller: zipocodeController,
+                keyboardType: TextInputType.phone,
+                hintText: "ZIP Code* ",
+                validator: (val) {
+                  if (val == null || val.isEmpty) {
+                    return 'This is a required field'; // Validation: must not be empty
+                  }
+                  return null;
+                },
+                onValidationChanged: (isValid) {
+                  setState(() {
+                    isZipCodeValid = isValid;
+                  });
+                },
+                errorText: isZipCodeValid
+                    ? null
+                    : 'Zip Code is a required field', // Show error when invalid
+              ),
+              20.verticalSpace,
+              CustomStyledTextField(
+                controller: cityController,
+                keyboardType: TextInputType.phone,
+                hintText: "City*",
+                validator: (val) {
+                  if (val == null || val.isEmpty) {
+                    return 'City Name is a required field'; // Validation: must not be empty
+                  }
+                  return null;
+                },
+                onValidationChanged: (isValid) {
+                  setState(() {
+                    isCityValid = isValid;
+                  });
+                },
+                errorText: isCityValid
+                    ? null
+                    : 'This is a required field', // Show error when invalid
+              ),
+              20.verticalSpace,
               Container(
                 width: 360.w,
                 height: 50.h,
@@ -138,7 +249,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                             child: Text(
                               item,
                               style: TextStyle(
-                                fontFamily: "Metrophobic",
+                                fontFamily: "Lato",
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -152,7 +263,7 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                           child: Text(
                             item,
                             style: TextStyle(
-                              fontFamily: "Metrophobic",
+                              fontFamily: "Lato",
                               fontSize: 18.sp,
                               fontWeight: FontWeight.w400,
                             ),
@@ -169,16 +280,24 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                   ),
                 ),
               ),
-              const CustomTextFieldLabel(
-                labelText: "House/Flat Number*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
+// CONTACT DETAILS PART
+              20.verticalSpace,
+              const Align(
+                alignment: Alignment.centerLeft,
+                child: CustomText(
+                  text: "ADDRESS DETAILS",
+                  textType: TextType.bodyLarge,
+                  textWeight: TextWeight.regular,
+                  color: Colors.black,
+                ),
               ),
+              10.verticalSpace,
+              20.verticalSpace,
               CustomStyledTextField(
-                controller: housenoController,
+                controller: customernameController,
                 keyboardType: TextInputType.name,
-                hintText: "Ex: ",
-                prefixIcon: const Icon(Icons.person),
+                hintText: "Customer Name*",
+
                 validator: (val) {
                   if (val == null || val.isEmpty) {
                     return 'This is a required field'; // Validation: must not be empty
@@ -187,76 +306,19 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                 },
                 onValidationChanged: (isValid) {
                   setState(() {
-                    isHouseNoValid = isValid;
+                    isCustomerNameValid = isValid;
                   });
                 },
-                errorText: isHouseNoValid
+                errorText: isCustomerNameValid
                     ? null
                     : 'House Number is a required field', // Show error when invalid
               ),
               20.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "Nearest Landmark*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
-              ),
               CustomStyledTextField(
-                controller: landmarkcontroller,
-                keyboardType: TextInputType.name,
-                hintText: "Ex: ",
-                prefixIcon: const Icon(Icons.person),
-                validator: (val) {
-                  if (val == null || val.isEmpty) {
-                    return 'This is a required field'; // Validation: must not be empty
-                  }
-                  return null;
-                },
-                onValidationChanged: (isValid) {
-                  setState(() {
-                    isHouseNoValid = isValid;
-                  });
-                },
-                errorText: isHouseNoValid
-                    ? null
-                    : 'This is a required field', // Show error when invalid
-              ),
-              20.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "Area*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
-              ),
-              CustomStyledTextField(
-                controller: landmarkcontroller,
-                keyboardType: TextInputType.name,
-                hintText: "Ex: ",
-                prefixIcon: const Icon(Icons.person),
-                validator: (val) {
-                  if (val == null || val.isEmpty) {
-                    return 'This is a required field'; // Validation: must not be empty
-                  }
-                  return null;
-                },
-                onValidationChanged: (isValid) {
-                  setState(() {
-                    isHouseNoValid = isValid;
-                  });
-                },
-                errorText: isHouseNoValid
-                    ? null
-                    : 'This is a required field', // Show error when invalid
-              ),
-              20.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "ZIP Code*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
-              ),
-              CustomStyledTextField(
-                controller: landmarkcontroller,
+                controller: contactnoController,
                 keyboardType: TextInputType.phone,
-                hintText: "Ex: ",
-                prefixIcon: const Icon(Icons.person),
+                hintText: "Customer Contact No*",
+
                 validator: (val) {
                   if (val == null || val.isEmpty) {
                     return 'This is a required field'; // Validation: must not be empty
@@ -265,66 +327,45 @@ class _EditAddressScreenState extends State<EditAddressScreen> {
                 },
                 onValidationChanged: (isValid) {
                   setState(() {
-                    isHouseNoValid = isValid;
+                    isCustomerNoValid = isValid;
                   });
                 },
-                errorText: isHouseNoValid
+                errorText: isCustomerNoValid
                     ? null
-                    : 'This is a required field', // Show error when invalid
+                    : 'Contact Number is a required field', // Show error when invalid
               ),
               20.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "Area*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
+
+              Row(
+                children: [
+                  Checkbox(
+                    value: _isChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _isChecked = value ?? false;
+                      });
+                    },
+                  ),
+                  const CustomText(
+                    text: "Use as Default Address",
+                    textType: TextType.bodySmall,
+                    textWeight: TextWeight.regular,
+                    color: Colors.black,
+                  ),
+                ],
               ),
-              CustomStyledTextField(
-                controller: landmarkcontroller,
-                keyboardType: TextInputType.name,
-                hintText: "Ex: ",
-                prefixIcon: const Icon(Icons.person),
-                validator: (val) {
-                  if (val == null || val.isEmpty) {
-                    return 'This is a required field'; // Validation: must not be empty
-                  }
-                  return null;
-                },
-                onValidationChanged: (isValid) {
-                  setState(() {
-                    isHouseNoValid = isValid;
-                  });
-                },
-                errorText: isHouseNoValid
-                    ? null
-                    : 'This is a required field', // Show error when invalid
+              10.verticalSpace,
+              CustomElevatedButton(
+                onPressed: () {},
+                text: "Save Address",
+                height: 50.sp,
+                width: double.infinity,
+                backgroundColor: Colors.blue,
+                borderColor: Colors.blue,
+                borderWidth: 1,
+                textColor: Colors.white,
+                iconColor: Colors.blue,
               ),
-              20.verticalSpace,
-              const CustomTextFieldLabel(
-                labelText: "Area*",
-                fontColor: Colors.grey,
-                fontWeight: FontWeight.w400,
-              ),
-              CustomStyledTextField(
-                controller: landmarkcontroller,
-                keyboardType: TextInputType.name,
-                hintText: "Ex: ",
-                prefixIcon: const Icon(Icons.person),
-                validator: (val) {
-                  if (val == null || val.isEmpty) {
-                    return 'This is a required field'; // Validation: must not be empty
-                  }
-                  return null;
-                },
-                onValidationChanged: (isValid) {
-                  setState(() {
-                    isHouseNoValid = isValid;
-                  });
-                },
-                errorText: isHouseNoValid
-                    ? null
-                    : 'This is a required field', // Show error when invalid
-              ),
-              20.verticalSpace,
             ],
           ),
         ),
