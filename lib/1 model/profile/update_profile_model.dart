@@ -14,17 +14,17 @@ class UpdateProfileModel {
       if (json['user'] != null) {
         userId = json['user']['userId'];
         email = json['user']['email'];
-        fullname = json['user']['fullname'];
+        fullname = json['user']['fullName'];
       }
     } else {
-      fullname = json['fullname'];
+      fullname = json['fullName'];
       email = json['email'];
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (fullname != null) data['fullname'] = fullname;
+    if (fullname != null) data['fullName'] = fullname;
     if (email != null) data['email'] = email;
     if (userId != null) data['userId'] = userId;
     if (message != null) data['message'] = message;

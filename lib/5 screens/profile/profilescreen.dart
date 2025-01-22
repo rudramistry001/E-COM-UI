@@ -3,6 +3,7 @@ import 'package:e_com_ui/4%20view%20model/register_view_model.dart';
 import 'package:e_com_ui/5%20screens/auth/widgets/custom_divider.dart';
 import 'package:e_com_ui/5%20screens/profile/change_address_screen.dart';
 import 'package:e_com_ui/5%20screens/profile/edit_profile_screen.dart';
+import 'package:e_com_ui/5%20screens/profile/view_profile_screen.dart';
 import 'package:e_com_ui/5%20screens/profile/widgets/1_profile_tile.dart';
 import 'package:e_com_ui/5%20screens/profile/widgets/profile_container.dart';
 import 'package:e_com_ui/6%20global%20widgets/custom_elevated_button.dart';
@@ -94,7 +95,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EditProfileScreen()),
+                        builder: (context) => const ViewProfileScreen()),
                   );
                 },
                 icon: Icons.person_outlined,
