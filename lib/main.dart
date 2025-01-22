@@ -54,6 +54,10 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner:
                 false, // Disabling the debug banner on UI.
 
+                  theme: ThemeData(
+              scaffoldBackgroundColor: Colors.grey.shade100, // Set default background color.
+            ),
+
             home: const InitialLoadingScreen(),
           );
         });

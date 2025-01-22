@@ -10,8 +10,9 @@ class UrlConstant {
   static String baseUrl = BaseUrl().isProd ? prodUrl : uatUrl;
 
 
-//utils
+//main routes
   static String offer = "/offer";
+static String profile = "/profile";
 
 
 //authentication 
@@ -20,8 +21,14 @@ class UrlConstant {
   static String verifytoken = "/verify-token";
 
 
-  //dashboard
+  //Profile
 
+
+  //dashboard
   static String getoffer = "/getUploadsOffer";
+
+
+  //Profile
+  static String updateprofile = "/update-profile";
 
 }

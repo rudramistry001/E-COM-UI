@@ -89,6 +89,7 @@ class AddressCard extends StatelessWidget {
           thickness: 2.0,
           indent: 0.0,
           endIndent: 0.0,
+          color: Colors.grey.shade300,
         ),
         10.verticalSpace,
       ],

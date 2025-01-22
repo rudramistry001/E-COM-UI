@@ -1,6 +1,6 @@
 
 import 'package:e_com_ui/5%20screens/auth/widgets/custom_divider.dart';
-import 'package:e_com_ui/5%20screens/profile/manage_address_screen.dart';
+import 'package:e_com_ui/5%20screens/profile/change_address_screen.dart';
 import 'package:e_com_ui/5%20screens/profile/widgets/1_profile_tile.dart';
 import 'package:e_com_ui/5%20screens/profile/widgets/profile_container.dart';
 import 'package:e_com_ui/6%20global%20widgets/text_wideget.dart';
@@ -13,6 +13,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey.shade100,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.0.sp),
@@ -95,7 +96,7 @@ class ProfileScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const SavedAddressScreen()),
+                        builder: (context) => const AddressScreen()),
                   );
                 },
                 icon: Icons.location_on_outlined,
