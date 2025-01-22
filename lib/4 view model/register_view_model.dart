@@ -156,8 +156,8 @@ class RegisterViewModel with ChangeNotifier {
 
   Future<String> saveUserId(String id) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('id', id);
-    print("ROLE SAVED: $id");
+    await prefs.setString('userid', id);
+    print("USSER ID SAVED: $id");
     return id;
   }
 

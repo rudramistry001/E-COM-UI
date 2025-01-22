@@ -16,7 +16,7 @@ class BaseApiProvider {
 
   Uri getRequestUri({String path = '', Map<String, dynamic>? queryParameters}) {
     return Uri.http(
-      path.contains('core') ? 'localhost:6040' : baseUrl,
+      path.contains('core') ? 'localhost:8080' : baseUrl,
       // baseUrl,
       path,
       queryParameters,

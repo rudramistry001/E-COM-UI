@@ -30,5 +30,6 @@ static String profile = "/profile";
 
   //Profile
   static String updateprofile = "/update-profile";
+  static String viewprofile = "/view-profile";
 
 }

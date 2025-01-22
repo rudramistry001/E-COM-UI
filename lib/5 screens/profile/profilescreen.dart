@@ -1,14 +1,24 @@
 
+import 'package:e_com_ui/4%20view%20model/register_view_model.dart';
 import 'package:e_com_ui/5%20screens/auth/widgets/custom_divider.dart';
 import 'package:e_com_ui/5%20screens/profile/change_address_screen.dart';
+import 'package:e_com_ui/5%20screens/profile/edit_profile_screen.dart';
 import 'package:e_com_ui/5%20screens/profile/widgets/1_profile_tile.dart';
 import 'package:e_com_ui/5%20screens/profile/widgets/profile_container.dart';
+import 'package:e_com_ui/6%20global%20widgets/custom_elevated_button.dart';
 import 'package:e_com_ui/6%20global%20widgets/text_wideget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+ RegisterViewModel registerViewModel = RegisterViewModel();
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +90,13 @@ class ProfileScreen extends StatelessWidget {
               10.verticalSpace,
               CustomProfileWidget(
                 text: "Manage Your Profile",
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const EditProfileScreen()),
+                  );
+                },
                 icon: Icons.person_outlined,
               ),
               10.verticalSpace,
@@ -148,14 +164,20 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               20.verticalSpace,
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: CustomText(
-                  text: 'LOG OUT',
-                  textType: TextType.bodySmall,
-                  textWeight: TextWeight.regular,
-                  color: Colors.red,
-                ),
+              
+            CustomElevatedButton(
+                 onPressed: () {
+              registerViewModel.logoutUser(context);
+              },
+                text: "Log Out",
+                icon: Icons.logout_outlined,
+                height: 50.sp,
+                width: double.infinity,
+                backgroundColor: Colors.red,
+                borderColor: Colors.red,
+                borderWidth: 1,
+                textColor: Colors.white,
+                iconColor: Colors.white,
               ),
               50.verticalSpace,
               Align(

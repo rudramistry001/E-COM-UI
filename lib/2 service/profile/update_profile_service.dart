@@ -31,4 +31,36 @@ class UpdateProfileService extends BaseApiProvider {
       rethrow; // Rethrow the error to be handled at the caller level if needed
     }
   }
+
+
+   // Method to update user profile
+  Future<dynamic> viewUserProfile() async {
+
+    try {
+      // Retrieve the userId from SharedPreferences
+      final prefs = await SharedPreferences.getInstance();
+      final userId = prefs.getString('userId'); // Assuming userId is saved as a string
+
+      if (userId == null) {
+        throw Exception('User ID not found');
+      }
+
+     final uri = Uri.parse(
+      UrlConstant.uatUrl +
+          UrlConstant.profile +
+          UrlConstant.viewprofile +
+          userId,
+    );
+     final response = await getRequest(
+          Uri.parse(uri.toString(),));
+          print("UPDATE PROFILE REQUEST CALLED-------");
+          print(uri);
+      // You can handle the response here according to your requirements
+      return response;
+    } catch (e) {
+      // Handle errors like network issues or other exceptions
+      print('Error in viewing profile: $e');
+      rethrow; // Rethrow the error to be handled at the caller level if needed
+    }
+  }
 }
