@@ -4,7 +4,6 @@ import 'dart:async';
 import 'package:e_com_ui/1%20model/profile/update_profile_model.dart';
 import 'package:e_com_ui/2%20service/base%20service/base_service.dart';
 import 'package:e_com_ui/7%20constants/urls.dart';
-import 'package:http_interceptor/http_interceptor.dart';
 import 'package:shared_preferences/shared_preferences.dart'; // For accessing SharedPreferences
 
 class UpdateProfileService extends BaseApiProvider {
@@ -12,18 +11,18 @@ class UpdateProfileService extends BaseApiProvider {
   
   // Method to update user profile
   Future<dynamic> updateUserProfile(UpdateProfileModel updateprofile) async {
-
+var body = updateprofile.toJson();
     try {
-      // Retrieve the userId from SharedPreferences
+    // Retrieve the userId from SharedPreferences
       final prefs = await SharedPreferences.getInstance();
-      final userId = prefs.getString('userId'); // Assuming userId is saved as a string
+      final userId = prefs.getString('userid'); // Assuming userId is saved as a string
 
       if (userId == null) {
         throw Exception('User ID not found');
       }
 
-     final response = await patch(
-          Uri.parse(UrlConstant.uatUrl + UrlConstant.profile + UrlConstant.updateprofile),);
+     final response = await patchRequest(
+          Uri.parse("${UrlConstant.uatUrl}${UrlConstant.profile}${UrlConstant.updateprofile}/$userId",),body);
       // You can handle the response here according to your requirements
       return response;
     } catch (e) {
@@ -47,10 +46,7 @@ class UpdateProfileService extends BaseApiProvider {
       }
 
      final uri = Uri.parse(
-      UrlConstant.uatUrl +
-          UrlConstant.profile +
-          UrlConstant.viewprofile + "/" +
-          userId,
+      "${UrlConstant.uatUrl}${UrlConstant.profile}${UrlConstant.viewprofile}/$userId",
     );
      final response = await getRequest(
           Uri.parse(uri.toString(),));

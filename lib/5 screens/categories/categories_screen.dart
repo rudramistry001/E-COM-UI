@@ -6,10 +6,10 @@ class CategoryItem extends StatelessWidget {
   final String label;
 
   const CategoryItem({
-    Key? key,
+    super.key,
     required this.iconPath,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +48,11 @@ class ProductCard extends StatelessWidget {
   final String subtitle;
 
   const ProductCard({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
     required this.subtitle,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -107,10 +107,10 @@ class RecentlyViewedItem extends StatelessWidget {
   final String title;
 
   const RecentlyViewedItem({
-    Key? key,
+    super.key,
     required this.imageUrl,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +150,7 @@ class RecentlyViewedItem extends StatelessWidget {
 
 // home_screen.dart
 class HomeScreen2 extends StatelessWidget {
-  const HomeScreen2({Key? key}) : super(key: key);
+  const HomeScreen2({super.key});
 
   @override
   Widget build(BuildContext context) {

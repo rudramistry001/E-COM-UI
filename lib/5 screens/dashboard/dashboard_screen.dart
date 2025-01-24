@@ -22,7 +22,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   // List of pages corresponding to each tab
   final List<Widget> _pages = [
     const HomeScreen(),
-    HomeScreen2(),
+    const HomeScreen2(),
     const NotificationScreen(),
     const SearchScreen(),
     const ProfileScreen(), // Added ProfileScreen here

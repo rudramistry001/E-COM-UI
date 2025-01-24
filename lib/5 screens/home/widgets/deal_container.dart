@@ -6,11 +6,11 @@ class DealCard extends StatelessWidget {
   final String imageUrl;
 
   const DealCard({
-    Key? key,
+    super.key,
     required this.title,
     required this.discount,
     this.imageUrl = '', // Optional parameter for placeholder support
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

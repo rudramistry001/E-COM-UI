@@ -4,11 +4,11 @@ import 'package:e_com_ui/4%20view%20model/update_profile_view_model.dart';
 import 'package:e_com_ui/5%20screens/auth/widgets/custom_textfield_label.dart';
 import 'package:e_com_ui/6%20global%20widgets/custom_app_bar.dart';
 import 'package:e_com_ui/6%20global%20widgets/custom_elevated_button.dart';
-import 'package:e_com_ui/6%20global%20widgets/text_wideget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
 
@@ -24,22 +24,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize controllers with empty strings first
-    _nameController = TextEditingController(text: '');
-    _emailController = TextEditingController(text: '');
-    // Load profile data immediately
+    _nameController = TextEditingController();
+    _emailController = TextEditingController();
     _loadProfileData();
   }
 
   Future<void> _loadProfileData() async {
     final viewModel = context.read<UpdateProfileViewModel>();
     await viewModel.viewUserProfile(context);
-    
-    // Update controllers with fetched data
-    setState(() {
-      _nameController.text = viewModel.fullname ?? '';
-      _emailController.text = viewModel.email ?? '';
-    });
+
+    if (viewModel.fullname != null && viewModel.email != null) {
+      setState(() {
+        _nameController.text = viewModel.fullname!;
+        _emailController.text = viewModel.email!;
+      });
+    }
   }
 
   @override
@@ -51,14 +50,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   Future<void> _handleUpdateProfile(UpdateProfileViewModel viewModel) async {
     if (_formKey.currentState!.validate()) {
+      // Ensure we capture the latest values in the text fields
       final updateProfile = UpdateProfileModel(
-        fullname: _nameController.text.trim(),
-        email: _emailController.text.trim(),
+        fullname: _nameController.text,
+        email: _emailController.text,
       );
 
-      await viewModel.registerUser(context, updateProfile);
+      // Debugging: Log the controller values to ensure they are correct
+      print("Captured Full Name: ${_nameController.text}");
+      print("Captured Email: ${_emailController.text}");
+
+      await viewModel.updateuser(context, updateProfile);
+
+      // Optional: Handle response and notify
       if (mounted) {
-        Navigator.pop(context, true);
+        Navigator.pop(context, true); // Optionally return to previous screen
       }
     }
   }
@@ -66,9 +72,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         appbartext: "Edit Profile",
-       
       ),
       body: Consumer<UpdateProfileViewModel>(
         builder: (context, viewModel, child) {
@@ -151,6 +156,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         vertical: 16.sp,
                       ),
                     ),
+                    onChanged: (value) {
+                      print("Full Name Updated: $value");
+                    },
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
                         return 'Please enter your full name';
@@ -184,6 +192,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         vertical: 16.sp,
                       ),
                     ),
+                    onChanged: (value) {
+                      print("Email Updated: $value");
+                    },
                     validator: (value) {
                       if (value == null || value.trim().isEmpty) {
                         return 'Please enter your email';

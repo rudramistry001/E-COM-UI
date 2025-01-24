@@ -12,7 +12,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class InitialLoadingScreen extends StatefulWidget {
-  const InitialLoadingScreen({Key? key}) : super(key: key);
+  const InitialLoadingScreen({super.key});
 
   @override
   State<InitialLoadingScreen> createState() => _InitialLoadingScreenState();
@@ -111,7 +111,7 @@ class _InitialLoadingScreenState extends State<InitialLoadingScreen> {
 
               const SizedBox(height: 40),
 
-              CustomText(
+              const CustomText(
                 text: 'Verifying your Shipping...',
                 textType: TextType.title,
                 textWeight: TextWeight.semiBold,

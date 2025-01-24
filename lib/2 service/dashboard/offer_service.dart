@@ -9,11 +9,10 @@ import 'package:e_com_ui/7%20constants/urls.dart';
 
 class OfferServices extends BaseApiProvider {
   Future<dynamic> getoffer(OfferModel offermodel) async {
-    var body = offermodel.toJson();
 
     try {
-      final response = await postRequest(
-          Uri.parse(UrlConstant.uatUrl + UrlConstant.offer + UrlConstant.getoffer), body);
+      final response = await getRequest(
+          Uri.parse(UrlConstant.uatUrl + UrlConstant.offer + UrlConstant.getoffer), );
       // You can handle the response here according to your requirements
       return response;
     } catch (e) {

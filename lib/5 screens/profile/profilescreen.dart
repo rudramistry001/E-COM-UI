@@ -147,7 +147,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               10.verticalSpace,
               const Align(
                 alignment: Alignment.centerLeft,
-                child: const CustomText(
+                child: CustomText(
                   text: 'Report A Safety Emergency',
                   textType: TextType.caption,
                   textWeight: TextWeight.regular,

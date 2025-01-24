@@ -1,7 +1,7 @@
 import 'package:e_com_ui/4%20view%20model/offer_view_model.dart';
 import 'package:e_com_ui/4%20view%20model/register_view_model.dart';
 import 'package:e_com_ui/4%20view%20model/update_profile_view_model.dart';
-import 'package:e_com_ui/8%20global%20utils/initial_loading_screen.dart';
+import 'package:e_com_ui/map_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -61,7 +61,7 @@ class MyApp extends StatelessWidget {
                   Colors.grey.shade100, // Set default background color.
             ),
 
-            home: const InitialLoadingScreen(),
+            home: const MumbaiMapScreen(),
           );
         });
   }
